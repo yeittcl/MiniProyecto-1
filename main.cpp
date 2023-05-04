@@ -1,23 +1,25 @@
 #include <iostream>
-#include <deque>
-#include <math.h>
+#include <chrono>
 #include "nodo.h"
 #include "nodoResumen.h"
 #include "listarr.h"
 using namespace std;
+typedef chrono::milliseconds MSEC;
+typedef chrono::high_resolution_clock HRC;
 
 int main()
 {
+    int num_datos = 10000;
     ListArr* lr = new ListArr();
-    lr->insert_left(0);
-    lr->insert_left(1);
-    lr->insert_left(2);
-    lr->insert_left(3);
-    lr->insert_left(4);
-    lr->insert(1,9);
-    lr->insert_right(-1);
-    lr->print();
-    cout<<lr->find(1)<<endl;
+    auto start = HRC::now();
+
+    for(int i = 0; i<num_datos; i++){
+        lr->insert_left(i);
+    }
+
+    auto end = HRC::now();
+    auto exect_time = chrono::duration_cast<MSEC>(end-start);
+    cout<<"tiempo de ejecucion = "<<exect_time.count()<<" ms"<<endl;
 
     return 0;
 }
