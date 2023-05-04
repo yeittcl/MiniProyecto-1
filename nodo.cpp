@@ -28,18 +28,18 @@ void Nodo::add(int index, int element)
         if (next == nullptr)
         {
             next = new Nodo(nullptr);
-            next->add(0, data[maxSize-1]);
+            next->add(0, data[actualSize-1]);
             reciencreado = true;
         }
         if (next->isFull())
         {
             Nodo* nodoIntermedio = new Nodo(next);
             setNext(nodoIntermedio);
-            next->add(0,data[maxSize-1]);
+            next->add(0,data[actualSize-1]);
         }else
         {
             if(reciencreado == false){
-            next->add(0,data[maxSize-1]);
+            next->add(0,data[actualSize-1]);
             }
         }
 
@@ -55,8 +55,6 @@ void Nodo::add(int index, int element)
 
     if(!isFull()){
       actualSize++; 
-      cout<<endl;
-      cout<<endl;
     } 
 }
 
